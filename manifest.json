@@ -1,0 +1,15 @@
+{
+  "name": "Rami.chop",
+  "short_name": "Rami.chop",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f0c1b",
+  "theme_color": "#ff3c78",
+  "icons": [
+    {
+      "src": "5573_2.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
