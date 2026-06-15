@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rami chop - متجر شحن الألعاب</title>
     <!-- استيراد خط تجاري أنيق مشابه للأمثلة -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <!-- مكتبة الأيقونات لتصميم الأزرار والسلة -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -15,6 +15,7 @@
             --bg-dark: #0f0c1b; /* خلفية المتجر الغامقة */
             --card-bg: #19142d; /* خلفية البطاقات */
             --text-color: #ffffff;
+            --accent-color: #f6dc58; /* اللون الذهبي للأسعار */
         }
 
         body { 
@@ -23,10 +24,10 @@
             color: var(--text-color); 
             margin: 0; 
             padding: 0; 
-            padding-bottom: 80px; /* مسافة للزر العائم */
+            padding-bottom: 80px; 
         }
 
-        /* 1. الشريط العلوي العلوي جداً (شريط الترحيب التنبيهي) */
+        /* شريط الترحيب التنبيهي */
         .top-alert {
             background-color: #6b14d2;
             color: #fff;
@@ -36,7 +37,7 @@
             font-weight: 600;
         }
 
-        /* 2. الهيدر المطور (أيقونات المتجر) */
+        /* الهيدر المطور */
         .main-header {
             background-color: var(--card-bg);
             padding: 15px;
@@ -49,135 +50,133 @@
             z-index: 100;
         }
 
-        .header-icons {
-            display: flex;
-            gap: 18px;
-            font-size: 18px;
-            color: #bfaaff;
-        }
+        .header-icons { display: flex; gap: 18px; font-size: 18px; color: #bfaaff; }
+        .logo { font-size: 22px; font-weight: 800; color: var(--primary-color); }
 
-        .header-icons i:hover { color: var(--primary-color); }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--primary-color);
-            text-shadow: 0 0 10px rgba(255, 60, 120, 0.3);
-        }
-
-        /* 3. شريط البحث الاحترافي */
-        .search-container {
-            padding: 12px 15px;
-        }
-        .search-box {
-            background-color: #211b3b;
-            border: 1px solid #32295a;
-            border-radius: 25px;
-            padding: 10px 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .search-box input {
-            background: none;
-            border: none;
-            color: white;
-            width: 100%;
-            font-family: 'Cairo';
-            outline: none;
-        }
-
-        /* 4. البانر الإعلاني العريض (Slider Banner) */
+        /* البانر الإعلاني العريض */
         .promo-banner {
-            margin: 10px 15px;
+            margin: 15px;
             background: linear-gradient(135deg, #ff3c78 0%, #6b14d2 100%);
             border-radius: 15px;
             padding: 25px 20px;
             text-align: right;
-            position: relative;
-            overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
-        .promo-banner h2 { margin: 0; font-size: 24px; font-weight: 800; }
-        .promo-banner p { margin: 5px 0 15px 0; color: #f1eaff; font-size: 14px; }
-        .promo-btn {
-            background-color: #fff;
-            color: #6b14d2;
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-weight: 700;
-            display: inline-block;
-            text-decoration: none;
-            font-size: 13px;
-        }
+        .promo-banner h2 { margin: 0; font-size: 22px; font-weight: 800; }
+        .promo-banner p { margin: 5px 0 15px 0; color: #f1eaff; font-size: 13px; }
 
-        /* نقاط التمرير تحت البانر */
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 20px;
-        }
-        .dot { width: 8px; height: 8px; background-color: #32295a; border-radius: 50%; }
-        .dot.active { background-color: var(--primary-color); width: 20px; border-radius: 10px; }
-
-        /* عناوين الأقسام الرئيسية */
+        /* عناوين الأقسام */
         .section-title {
             text-align: right;
             padding: 0 15px;
             font-size: 18px;
             font-weight: 700;
+            margin-top: 25px;
             margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: #bfaaff;
+            border-right: 4px solid var(--primary-color);
+            padding-right: 10px;
         }
-        .section-title a { color: var(--primary-color); font-size: 13px; text-decoration: none; }
 
-        /* 5. شبكة البانرات والأقسام العريضة (مثل المتجر رقم 2) */
-        .categories-grid {
+        /* 1. قسم قائمة الأسعار الاحترافي */
+        .products-container {
             padding: 0 15px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
+            gap: 20px;
         }
 
-        .category-row {
-            background: linear-gradient(90deg, #251b4f 0%, #191238 100%);
-            border: 1px solid #33276c;
-            border-radius: 12px;
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid #2d254e;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: right;
+        }
+
+        .product-card-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 15px 20px;
+            gap: 12px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #2d254e;
+            padding-bottom: 10px;
+        }
+
+        .product-card-header i { font-size: 24px; color: var(--primary-color); }
+        .product-card-header h3 { margin: 0; font-size: 18px; font-weight: 700; }
+
+        /* جدول الأسعار المبسط والممتاز للموبايل */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .price-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid #211b3b;
+            font-size: 15px;
+        }
+
+        .price-table td.price-value {
+            text-align: left;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* 2. قسم طرق الدفع (Payment Methods) */
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 0 15px;
+        }
+
+        .payment-box {
+            background-color: var(--card-bg);
+            border: 1px solid #2d254e;
+            border-radius: 12px;
+            padding: 15px 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .payment-box i { font-size: 26px; }
+        .p-d17 i { color: #f39c12; }
+        .p-transfer i { color: #3498db; }
+        .p-cards i { color: #2ecc71; }
+        .p-meet i { color: #e74c3c; }
+
+        .payment-box span { font-size: 14px; font-weight: 600; }
+
+        /* أزرار مواقع التواصل السريعة */
+        .social-section {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px 15px 0 15px;
+        }
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
             text-decoration: none;
             color: white;
-            transition: 0.3s;
-        }
-        .category-row:hover {
-            border-color: var(--primary-color);
-            transform: scale(1.02);
-        }
-        .cat-info { display: flex; align-items: center; gap: 15px; }
-        .cat-icon-box {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            gap: 8px;
         }
-        .cat-name { font-weight: 700; font-size: 16px; }
+        .btn-fb { background-color: #1877f2; }
+        .btn-tt { background-color: #000; border: 1px solid var(--primary-color); }
 
-        /* ألوان مخصصة للأقسام */
-        .bg-pubg { background-color: #f39c12; color: #fff; }
-        .bg-ff { background-color: #e74c3c; color: #fff; }
-        .bg-tiktok { background-color: #000; color: #fff; border: 1px solid #ff3c78; }
-        .bg-fb { background-color: #1877f2; color: #fff; }
-
-        /* 6. زر الواتساب العائم الاحترافي المتنقل (كما بالصورة) */
+        /* زر الواتساب العائم */
         .whatsapp-floating {
             position: fixed;
             bottom: 20px;
@@ -210,21 +209,20 @@
             color: #796baf;
             border-top: 1px solid #2d254e;
             margin-top: 40px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط الإعلان العلوي الملون -->
+    <!-- شريط التنبيه العلوي -->
     <div class="top-alert">
-        🎉 أهلاً وسهلاً بك في متجر rami chop لشحن الألعاب الموثوق 100%
+        🚀 شحن فوري وآمن لجميع الألعاب - متجر rami chop المعتمد
     </div>
 
-    <!-- هيدر المتجر الاحترافي -->
+    <!-- هيدر المتجر -->
     <div class="main-header">
-        <div class="header-icons">
-            <i class="fas fa-bars"></i>
-        </div>
+        <div class="header-icons"><i class="fas fa-bars"></i></div>
         <div class="logo">rami chop</div>
         <div class="header-icons">
             <i class="fas fa-shopping-bag"></i>
@@ -232,93 +230,130 @@
         </div>
     </div>
 
-    <!-- صندوق البحث -->
-    <div class="search-container">
-        <div class="search-box">
-            <i class="fas fa-search" style="color: #63559c;"></i>
-            <input type="text" placeholder="ابحث عن لعبتك المفضلة...">
+    <!-- بانر دعائي -->
+    <div class="promo-banner">
+        <h2>عروض الشحن مستمرة! 🔥</h2>
+        <p>اختر الكمية التي تريدها وتواصل معنا عبر الواتساب لإرسال الـ ID وإتمام الدفع فوراً.</p>
+    </div>
+
+    <!-- قسم الأسعار والمنتجات -->
+    <div class="section-title">أسعار شحن الألعاب الحالية</div>
+    
+    <div class="products-container">
+
+        <!-- أسعار فري فاير -->
+        <div class="product-card">
+            <div class="product-card-header">
+                <i class="fas fa-fire"></i>
+                <h3>جواهر فري فاير (Free Fire)</h3>
+            </div>
+            <table class="price-table">
+                <tr><td>100 جوهرة</td><td class="price-value">3.500 TND</td></tr>
+                <tr><td>210 جوهرة</td><td class="price-value">7.000 TND</td></tr>
+                <tr><td>530 جوهرة</td><td class="price-value">16.500 TND</td></tr>
+                <tr><td>1080 جوهرة</td><td class="price-value">33.000 TND</td></tr>
+            </table>
+        </div>
+
+        <!-- أسعار ببجي موبايل -->
+        <div class="product-card">
+            <div class="product-card-header">
+                <i class="fas fa-gamepad"></i>
+                <h3>شدات ببجي موبايل (PUBG UC)</h3>
+            </div>
+            <table class="price-table">
+                <tr><td>60 شدّة (UC)</td><td class="price-value">4.000 TND</td></tr>
+                <tr><td>325 شدّة (UC)</td><td class="price-value">18.000 TND</td></tr>
+                <tr><td>660 شدّة (UC)</td><td class="price-value">35.000 TND</td></tr>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- قسم طرق الدفع المقبولة -->
+    <div class="section-title">طرق الدفع المتوفرة في تونس</div>
+    
+    <div class="payment-grid">
+        <div class="payment-box p-d17">
+            <i class="fas fa-wallet"></i>
+            <span>تطبيق D17</span>
+        </div>
+        <div class="payment-box p-transfer">
+            <i class="fas fa-university"></i>
+            <span>حوالة بريدية</span>
+        </div>
+        <div class="payment-box p-cards">
+            <i class="fas fa-mobile-alt"></i>
+            <span>رصيد هاتف (Light)</span>
+        </div>
+        <div class="payment-box p-meet">
+            <i class="fas fa-handshake"></i>
+            <span>يداً بيد (مباشر)</span>
         </div>
     </div>
 
-    <!-- البانر الترويجي الرئيسي الكبير -->
-    <div class="promo-banner">
-        <h2>شحن الألعاب الفوري 🎮</h2>
-        <p>ببجي، فري فاير، وباقات إنترنت بأسعار منافسة جداً عبر الـ ID.</p>
-        <a href="https://wa.me/21646325170" target="_blank" class="promo-btn">اطلب الشحن الآن</a>
+    <!-- روابط الحسابات الرسمية -->
+    <div class="section-title">تابعنا على وسائل التواصل الاجتماعي</div>
+    <div class="social-section">
+        <!-- استبدل رابط_الفيسبوك برابط حسابك -->
+        <a href="رابط_حساب_الفيسبوك_هنا" target="_blank" class="social-btn btn-fb">
+            <i class="fab fa-facebook-f"></i> فيسبوك
+        </a>
+        <!-- استبدل رابط_التيك_توك برابط حسابك -->
+        <a href="رابط_حساب_التيك_توك_هنا" target="_blank" class="social-btn btn-tt">
+            <i class="fab fa-tiktok"></i> تيك توك
+        </a>
     </div>
 
-    <!-- نقاط السلايدر السفلي -->
-    <div class="slider-dots">
-        <div class="dot active"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-
-    <!-- قسم الخدمات والألعاب -->
-    <div class="section-title">
-        <span>قائمة الخدمات والشحن</span>
-        <a href="#">عرض الكل ←</a>
-    </div>
-
-    <!-- شبكة الأزرار والأقسام (ستايل المتاجر الاحترافية) -->
-    <div class="categories-grid">
-
-        <!-- قسم فري فاير -->
-        <a href="https://wa.me/21646325170" target="_blank" class="category-row">
-            <div class="cat-info">
-                <div class="cat-icon-box bg-ff">
-                    <i class="fas fa-fire"></i>
-                </div>
-                <div class="cat-name">قسم جواهر فري فاير (Free Fire)</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
-        </a>
-
-        <!-- قسم ببجي -->
-        <a href="https://wa.me/21646325170" target="_blank" class="category-row">
-            <div class="cat-info">
-                <div class="cat-icon-box bg-pubg">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <div class="cat-name">قسم شدات ببجي موبايل (UC)</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
-        </a>
-
-        <!-- قسم تيك توك -->
-        <a href="https://www.tiktok.com/@rami.o56?_r=1&_t=ZN-97DYku3iJ66" target="_blank" class="category-row">
-            <div class="cat-info">
-                <div class="cat-icon-box bg-tiktok">
-                    <i class="fab fa-tiktok"></i>
-                </div>
-                <div class="cat-name">تابع حسابنا المعتمد على تيك توك</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
-        </a>
-
-        <!-- قسم فيسبوك -->
-        <a href="https://www.facebook.com/share/1Fp3596WcV/" target="_blank" class="category-row">
-            <div class="cat-info">
-                <div class="cat-icon-box bg-fb">
-                    <i class="fab fa-facebook-f"></i>
-                </div>
-                <div class="cat-name">تابع صفحتنا على فيسبوك الرسمية</div>
-            </div>
-            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
-        </a>
-
-    </div>
-
-    <!-- زر واتساب العائم والمتحرك دائماً أسفل اليسار مثل الصور بالظبط -->
-    <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank" title="تواصل معنا مباشرة عبر واتساب">
+    <!-- زر الواتساب العائم لطلب الشحن والدفع -->
+    <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- فوتر المتجر -->
+    <!-- فوتر النهاية -->
     <footer>
-        <p>&copy; 2026 متجر rami chop. جميع الحقوق محفوظة.</p>
-        <p>رقم الدعم الفوري وتأكيد الحوالات (D17): 46325170 216+</p>
+        <p>&copy; 2026 متجر rami chop لخدمات الشحن السريع.</p>
+        <p>لتأكيد الحوالات، تواصل معنا على الرقم: 46325170 216+</p>
     </footer>
 
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rami chop - متجر شحن الألعاب</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background-color: #0f0c1b; color: #fff; margin: 0; text-align: center; }
+        .header { padding: 20px; color: #ff3c78; font-size: 24px; font-weight: bold; }
+        .card { background: #19142d; border-radius: 15px; padding: 20px; margin: 15px; border: 1px solid #ff3c78; }
+        .price { color: #f6dc58; font-weight: bold; font-size: 18px; }
+        .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
+        .btn { background: #25D366; color: white; padding: 15px; border-radius: 10px; display: block; text-decoration: none; font-weight: bold; margin: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">rami chop</div>
+    
+    <div class="card">
+        <h3>جواهر فري فاير</h3>
+        <p>100 جوهرة - <span class="price">3.500 TND</span></p>
+        <p>210 جوهرة - <span class="price">7.000 TND</span></p>
+    </div>
+
+    <div class="card">
+        <h3>طرق الدفع</h3>
+        <div class="payment-grid">
+            <div>D17</div>
+            <div>أوريدو</div>
+            <div>PayPal</div>
+            <div>مباشر</div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/21646325170" class="btn">اطلب الشحن الآن عبر الواتساب</a>
 </body>
 </html>
