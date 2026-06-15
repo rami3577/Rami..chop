@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rami chop - متجر شحن الألعاب</title>
-    <!-- استيراد خط القاهرة العربي الاحترافي -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات لتصميم السلة والأسهم -->
+    <title>rami chop - منصة التطبيقات والألعاب</title>
+    <!-- استيراد خط القاهرة الاحترافي للموبايل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات لجميع التطبيقات المشهورة -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #ff3c78; /* اللون الأساسي المتوهج */
-            --bg-dark: #0f0c1b; /* خلفية المتجر الغامقة */
-            --card-bg: #19142d; /* خلفية البطاقات */
+            --primary-color: #ff3c78;
+            --bg-dark: #0f0c1b;
+            --card-bg: #19142d;
             --text-color: #ffffff;
-            --accent-color: #f6dc58; /* اللون الذهبي للأسعار */
         }
 
         body { 
@@ -25,20 +24,19 @@
             margin: 0; 
             padding: 0; 
             padding-bottom: 80px; 
-            overflow-x: hidden;
         }
 
-        /* شريط الإعلان العلوي الملون */
+        /* شريط الترحيب العلوي */
         .top-alert {
             background-color: #6b14d2;
             color: #fff;
             font-size: 13px;
-            padding: 6px 10px;
+            padding: 8px 10px;
             text-align: center;
             font-weight: 600;
         }
 
-        /* الهيدر المطور (أيقونات المتجر) */
+        /* الهيدر الرئيسي */
         .main-header {
             background-color: var(--card-bg);
             padding: 15px;
@@ -51,181 +49,74 @@
             z-index: 100;
         }
 
-        .header-icons { display: flex; gap: 18px; font-size: 18px; color: #bfaaff; }
         .logo { font-size: 22px; font-weight: 800; color: var(--primary-color); }
+        .header-icons { color: #bfaaff; font-size: 18px; }
 
-        /* البانر الإعلاني العريض (Slider Banner) */
-        .promo-banner {
-            margin: 15px;
-            background: linear-gradient(135deg, #ff3c78 0%, #6b14d2 100%);
-            border-radius: 15px;
-            padding: 25px 20px;
-            text-align: right;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-        .promo-banner h2 { margin: 0; font-size: 22px; font-weight: 800; }
-        .promo-banner p { margin: 5px 0 15px 0; color: #f1eaff; font-size: 13px; }
-
-        /* عناوين الأقسام الرئيسية */
+        /* عناوين الأقسام */
         .section-title {
             text-align: right;
             padding: 0 15px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             margin-top: 25px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #bfaaff;
             border-right: 4px solid var(--primary-color);
             padding-right: 10px;
         }
 
-        /* 1. قسم قائمة الأسعار الاحترافي مع الاختيار */
-        .products-container {
+        /* شبكة التطبيقات الاحترافية عريضة الحجم للموبايل */
+        .apps-grid {
             padding: 0 15px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 12px;
         }
 
-        .product-card {
-            background-color: var(--card-bg);
-            border: 1px solid #2d254e;
-            border-radius: 15px;
-            padding: 15px;
-            text-align: right;
+        .app-row {
+            background: linear-gradient(90deg, #251b4f 0%, #191238 100%);
+            border: 1px solid #33276c;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
             transition: 0.3s;
         }
-        
-        /* تأثير التوهج عند اختيار المنتج */
-        .product-card:has(input[type="radio"]:checked) {
+
+        .app-row:hover {
             border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(255, 60, 120, 0.3);
+            transform: scale(1.02);
         }
 
-        .product-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #2d254e;
-            padding-bottom: 10px;
-        }
-
-        .product-card-header i { font-size: 24px; color: var(--primary-color); }
-        .product-card-header h3 { margin: 0; font-size: 18px; font-weight: 700; }
-
-        /* جدول الأسعار المبسط والممتاز للموبايل */
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 15px;
-        }
-
-        .price-table tr { cursor: pointer; }
-
-        .price-table td {
-            padding: 10px 0;
-            border-bottom: 1px solid #211b3b;
-            font-size: 15px;
-        }
-
-        .price-table td.check-col { width: 40px; text-align: center; }
-
-        /* ستايل الراديو بوتون (الاختيار الدائري) */
-        .price-table input[type="radio"] {
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border: 2px solid #6b14d2;
-            border-radius: 50%;
-            outline: none;
-            transition: 0.2s;
-            cursor: pointer;
-            vertical-align: middle;
-        }
+        .app-info { display: flex; align-items: center; gap: 15px; }
         
-        .price-table input[type="radio"]:checked {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            box-shadow: inset 0 0 0 3px var(--card-bg);
-        }
-
-        .price-table td.price-value {
-            text-align: left;
-            color: var(--accent-color);
-            font-weight: 700;
-        }
-
-        /* 2. خانات الـ ID الاحترافية */
-        .id-input-container {
-            margin-top: 15px;
-            background-color: #211b3b;
-            border: 1px solid #32295a;
+        .app-icon-box {
+            width: 45px;
+            height: 45px;
             border-radius: 10px;
-            padding: 12px 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .id-input-container i { color: #63559c; }
-        .id-input-container input {
-            background: none;
-            border: none;
-            color: white;
-            width: 100%;
-            font-family: 'Cairo';
-            outline: none;
-            font-size: 14px;
+            justify-content: center;
+            font-size: 22px;
         }
 
-        /* زر الشحن الخاص بكل لعبة */
-        .btn-game-submit {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: 700;
-            display: block;
-            width: 100%;
-            text-align: center;
-            text-decoration: none;
-            font-size: 15px;
-            transition: background-color 0.3s ease;
-        }
-        .btn-game-submit:hover {
-            background-color: #e3000f;
-        }
+        .app-name { font-weight: 700; font-size: 15px; }
 
-        /* 3. قسم طرق الدفع (Payment Methods) */
-        .payment-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            padding: 0 15px;
-        }
+        /* الألوان المخصصة لكل تطبيق لتطابق شكلها الأصلي */
+        .bg-freefire { background-color: #ff4500; }
+        .bg-pubg { background-color: #f39c12; }
+        .bg-tiktok { background-color: #000000; border: 1px solid #ff3c78; }
+        .bg-facebook { background-color: #1877f2; }
+        .bg-d17 { background-color: #8e44ad; }
+        .bg-sobflous { background-color: #27ae60; }
+        .bg-paypal { background-color: #003087; }
+        .bg-netflix { background-color: #e50914; }
+        .bg-spotify { background-color: #1ed760; }
 
-        .payment-box {
-            background-color: var(--card-bg);
-            border: 1px solid #2d254e;
-            border-radius: 12px;
-            padding: 15px 10px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .payment-box i { font-size: 26px; }
-        .p-d17 i { color: #f39c12; }
-        .p-transfer i { color: #3498db; }
-        .p-cards i { color: #2ecc71; }
-        .p-meet i { color: #e74c3c; }
-
-        .payment-box span { font-size: 14px; font-weight: 600; }
-
-        /* زر الواتساب العائم الاحترافي المتنقل */
+        /* زر الواتساب العائم */
         .whatsapp-floating {
             position: fixed;
             bottom: 20px;
@@ -242,13 +133,6 @@
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             z-index: 999;
             text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         footer {
@@ -264,173 +148,123 @@
 </head>
 <body>
 
-    <!-- شريط الإعلان العلوي -->
     <div class="top-alert">
-        🎉 أهلاً وسهلاً بك في متجر rami chop لشحن الألعاب الموثوق 100%
+        🚀 منصة rami chop المعتمدة - دليل جميع التطبيقات والألعاب المشهورة
     </div>
 
-    <!-- هيدر المتجر الاحترافي -->
     <div class="main-header">
         <div class="header-icons"><i class="fas fa-bars"></i></div>
         <div class="logo">rami chop</div>
-        <div class="header-icons">
-            <i class="fas fa-shopping-bag"></i>
-            <i class="fas fa-user"></i>
-        </div>
+        <div class="header-icons"><i class="fas fa-search"></i></div>
     </div>
 
-    <!-- بانر ترويجي رئيسي كبير -->
-    <div class="promo-banner">
-        <h2>عروض الشحن مستمرة! 🔥</h2>
-        <p>اختر الكمية وأدخل الـ ID الخاص بك الآن، وسيتم تحويلك إلى الواتساب لإتمام الدفع فوراً.</p>
-    </div>
+    <!-- قسم 1: الألعاب ومواقع التواصل -->
+    <div class="section-title">أشهر الألعاب ومواقع التواصل</div>
+    <div class="apps-grid">
+        
+        <!-- فري فاير -->
+        <a href="https://wa.me/21646325170" target="_blank" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-freefire"><i class="fas fa-fire"></i></div>
+                <div class="app-name">Garena Free Fire</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
 
-    <!-- قسم الأسعار والمنتجات (مطور مع الاختيار) -->
-    <div class="section-title">أسعار شحن الألعاب الحالية</div>
-    
-    <div class="products-container">
+        <!-- ببجي -->
+        <a href="https://wa.me/21646325170" target="_blank" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-pubg"><i class="fas fa-gamepad"></i></div>
+                <div class="app-name">PUBG Mobile</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
 
-        <!-- أسعار فري فاير (مطور) -->
-        <div class="product-card" id="ff_card">
-            <div class="product-card-header">
-                <i class="fas fa-fire"></i>
-                <h3>جواهر فري فاير (Free Fire)</h3>
+        <!-- تيك توك -->
+        <a href="#" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-tiktok"><i class="fab fa-tiktok"></i></div>
+                <div class="app-name">TikTok</div>
             </div>
-            
-            <!-- جدول الأسعار المطور مع الاختيار -->
-            <table class="price-table">
-                <tr onclick="document.getElementById('ff_100').checked=true">
-                    <td class="check-col"><input type="radio" id="ff_100" name="ff_amount" value="100 جوهرة" data-price="3.500 TND" checked></td>
-                    <td>100 جوهرة</td>
-                    <td class="price-value">3.500 TND</td>
-                </tr>
-                <tr onclick="document.getElementById('ff_210').checked=true">
-                    <td class="check-col"><input type="radio" id="ff_210" name="ff_amount" value="210 جوهرة" data-price="7.000 TND"></td>
-                    <td>210 جوهرة</td>
-                    <td class="price-value">7.000 TND</td>
-                </tr>
-                <tr onclick="document.getElementById('ff_530').checked=true">
-                    <td class="check-col"><input type="radio" id="ff_530" name="ff_amount" value="530 جوهرة" data-price="16.500 TND"></td>
-                    <td>530 جوهرة</td>
-                    <td class="price-value">16.500 TND</td>
-                </tr>
-                <tr onclick="document.getElementById('ff_1080').checked=true">
-                    <td class="check-col"><input type="radio" id="ff_1080" name="ff_amount" value="1080 جوهرة" data-price="33.000 TND"></td>
-                    <td>1080 جوهرة</td>
-                    <td class="price-value">33.000 TND</td>
-                </tr>
-            </table>
-            
-            <!-- خانة الـ ID المطور -->
-            <div class="id-input-container">
-                <i class="fas fa-tag"></i>
-                <input type="text" id="ff_id" placeholder="أدخل الآي دي (ID) الخاص بك هنا...">
-            </div>
-            
-            <!-- زر شحن فري فاير التفاعلي -->
-            <a href="#" onclick="orderFF()" class="btn-game-submit">اطلب شحن فري فاير الآن</a>
-        </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
 
-        <!-- أسعار ببجي موبايل (مطور) -->
-        <div class="product-card" id="pubg_card">
-            <div class="product-card-header">
-                <i class="fas fa-gamepad"></i>
-                <h3>شدات ببجي موبايل (PUBG UC)</h3>
+        <!-- فيسبوك -->
+        <a href="#" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-facebook"><i class="fab fa-facebook-f"></i></div>
+                <div class="app-name">Facebook</div>
             </div>
-            
-            <!-- جدول الأسعار المطور مع الاختيار -->
-            <table class="price-table">
-                <tr onclick="document.getElementById('pubg_60').checked=true">
-                    <td class="check-col"><input type="radio" id="pubg_60" name="pubg_amount" value="60 شدّة (UC)" data-price="4.000 TND" checked></td>
-                    <td>60 شدّة (UC)</td>
-                    <td class="price-value">4.000 TND</td>
-                </tr>
-                <tr onclick="document.getElementById('pubg_325').checked=true">
-                    <td class="check-col"><input type="radio" id="pubg_325" name="pubg_amount" value="325 شدّة (UC)" data-price="18.000 TND"></td>
-                    <td>325 شدّة (UC)</td>
-                    <td class="price-value">18.000 TND</td>
-                </tr>
-                <tr onclick="document.getElementById('pubg_660').checked=true">
-                    <td class="check-col"><input type="radio" id="pubg_660" name="pubg_amount" value="660 شدّة (UC)" data-price="35.000 TND"></td>
-                    <td>660 شدّة (UC)</td>
-                    <td class="price-value">35.000 TND</td>
-                </tr>
-            </table>
-            
-            <!-- خانة الـ ID المطور -->
-            <div class="id-input-container">
-                <i class="fas fa-tag"></i>
-                <input type="text" id="pubg_id" placeholder="أدخل الـ ID الخاص بك في ببجي...">
-            </div>
-            
-            <!-- زر شحن ببجي التفاعلي -->
-            <a href="#" onclick="orderPUBG()" class="btn-game-submit">اطلب شحن ببجي الآن</a>
-        </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
 
     </div>
 
-    <!-- قسم طرق الدفع المقبولة -->
-    <div class="section-title">طرق الدفع المتوفرة في تونس</div>
-    
-    <div class="payment-grid">
-        <div class="payment-box p-d17">
-            <i class="fas fa-wallet"></i>
-            <span>تطبيق D17</span>
-        </div>
-        <div class="payment-box p-transfer">
-            <i class="fas fa-university"></i>
-            <span>حوالة بريدية</span>
-        </div>
-        <div class="payment-box p-cards">
-            <i class="fas fa-mobile-alt"></i>
-            <span>رصيد هاتف (Light)</span>
-        </div>
-        <div class="payment-box p-meet">
-            <i class="fas fa-handshake"></i>
-            <span>يداً بيد (مباشر)</span>
-        </div>
+    <!-- قسم 2: تطبيقات الدفع والشحن -->
+    <div class="section-title">تطبيقات الدفع والشحن الإلكتروني</div>
+    <div class="apps-grid">
+
+        <!-- D17 -->
+        <a href="https://wa.me/21646325170" target="_blank" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-d17"><i class="fas fa-wallet"></i></div>
+                <div class="app-name">تطبيق D17 (البريد التونسي)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
+
+        <!-- Sobflous -->
+        <a href="#" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-sobflous"><i class="fas fa-money-bill-wave"></i></div>
+                <div class="app-name">Sobflous (صوب فلوس)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
+
+        <!-- PayPal -->
+        <a href="https://wa.me/21646325170" target="_blank" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-paypal"><i class="fab fa-paypal"></i></div>
+                <div class="app-name">PayPal العالمي</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
+
     </div>
 
-    <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank" title="تواصل معنا مباشرة عبر واتساب">
+    <!-- قسم 3: تطبيقات الترفيه والاشتراكات -->
+    <div class="section-title">تطبيقات الترفيه والمشاهدة</div>
+    <div class="apps-grid">
+
+        <!-- نيتفليكس -->
+        <a href="#" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-netflix"><i class="fas fa-tv"></i></div>
+                <div class="app-name">Netflix (أفلام ومسلسلات)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
+
+        <!-- سبوتيفاي -->
+        <a href="#" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-spotify"><i class="fab fa-spotify"></i></div>
+                <div class="app-name">Spotify (موسيقى وبودكاست)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
+
+    </div>
+
+    <!-- زر واتساب العائم -->
+    <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- فوتر النهاية -->
     <footer>
-        <p>&copy; 2026 متجر rami chop لخدمات الشحن السريع.</p>
-        <p>لتأكيد الحوالات، تواصل معنا على الرقم: 46325170 216+</p>
+        <p>&copy; 2026 جميع التطبيقات والألعاب مجمعة في rami chop.</p>
     </footer>
-
-    <!-- السكريبت التفاعلي لربط المتجر بالواتساب تلقائياً -->
-    <script>
-        // رقم الواتساب الخاص بك
-        const myWhatsApp = "21646325170";
-
-        // وظيفة طلب فري فاير
-        function orderFF() {
-            let idValue = document.getElementById("ff_id").value;
-            let amountValue = document.querySelector('input[name="ff_amount"]:checked').value;
-            let priceValue = document.querySelector('input[name="ff_amount"]:checked').getAttribute('data-price');
-            
-            if(idValue === "") { alert("يرجى إدخال الـ ID الخاص بك أولاً."); return; }
-            
-            let message = encodeURIComponent("أهلاً وسهلاً متجر rami chop!\nأريد طلب شحن:\nلعبة: فري فاير 🔥\nالآي دي: " + idValue + "\nالكمية: " + amountValue + "\nالسعر: " + priceValue + "\nيرجى التواصل لإتمام الدفع والتنفيذ.");
-            window.open("https://wa.me/" + myWhatsApp + "?text=" + message, '_blank');
-        }
-
-        // وظيفة طلب ببجي
-        function orderPUBG() {
-            let idValue = document.getElementById("pubg_id").value;
-            let amountValue = document.querySelector('input[name="pubg_amount"]:checked').value;
-            let priceValue = document.querySelector('input[name="pubg_amount"]:checked').getAttribute('data-price');
-            
-            if(idValue === "") { alert("يرجى إدخال الآي دي (ID) الخاص بك أولاً."); return; }
-            
-            let message = encodeURIComponent("أهلاً rami chop!\nأريد طلب شحن:\nلعبة: ببجي موبايل 🎮\nالـ ID: " + idValue + "\nالكمية: " + amountValue + "\nالسعر: " + priceValue + "\nشكراً لتواصلك.");
-            window.open("https://wa.me/" + myWhatsApp + "?text=" + message, '_blank');
-        }
-    </script>
 
 </body>
 </html>
