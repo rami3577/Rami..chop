@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rami chop - متجر شحن الألعاب</title>
-    <!-- استيراد خط تجاري أنيق مشابه للأمثلة -->
+    <!-- استيراد خط القاهرة العربي الاحترافي -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات لتصميم الأزرار والسلة -->
+    <!-- مكتبة الأيقونات لتصميم السلة والأسهم -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -25,9 +25,10 @@
             margin: 0; 
             padding: 0; 
             padding-bottom: 80px; 
+            overflow-x: hidden;
         }
 
-        /* شريط الترحيب التنبيهي */
+        /* شريط الإعلان العلوي الملون */
         .top-alert {
             background-color: #6b14d2;
             color: #fff;
@@ -37,7 +38,7 @@
             font-weight: 600;
         }
 
-        /* الهيدر المطور */
+        /* الهيدر المطور (أيقونات المتجر) */
         .main-header {
             background-color: var(--card-bg);
             padding: 15px;
@@ -53,7 +54,7 @@
         .header-icons { display: flex; gap: 18px; font-size: 18px; color: #bfaaff; }
         .logo { font-size: 22px; font-weight: 800; color: var(--primary-color); }
 
-        /* البانر الإعلاني العريض */
+        /* البانر الإعلاني العريض (Slider Banner) */
         .promo-banner {
             margin: 15px;
             background: linear-gradient(135deg, #ff3c78 0%, #6b14d2 100%);
@@ -65,7 +66,7 @@
         .promo-banner h2 { margin: 0; font-size: 22px; font-weight: 800; }
         .promo-banner p { margin: 5px 0 15px 0; color: #f1eaff; font-size: 13px; }
 
-        /* عناوين الأقسام */
+        /* عناوين الأقسام الرئيسية */
         .section-title {
             text-align: right;
             padding: 0 15px;
@@ -78,7 +79,7 @@
             padding-right: 10px;
         }
 
-        /* 1. قسم قائمة الأسعار الاحترافي */
+        /* 1. قسم قائمة الأسعار الاحترافي مع الاختيار */
         .products-container {
             padding: 0 15px;
             display: flex;
@@ -92,6 +93,13 @@
             border-radius: 15px;
             padding: 15px;
             text-align: right;
+            transition: 0.3s;
+        }
+        
+        /* تأثير التوهج عند اختيار المنتج */
+        .product-card:has(input[type="radio"]:checked) {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(255, 60, 120, 0.3);
         }
 
         .product-card-header {
@@ -113,10 +121,33 @@
             margin-bottom: 15px;
         }
 
+        .price-table tr { cursor: pointer; }
+
         .price-table td {
             padding: 10px 0;
             border-bottom: 1px solid #211b3b;
             font-size: 15px;
+        }
+
+        .price-table td.check-col { width: 40px; text-align: center; }
+
+        /* ستايل الراديو بوتون (الاختيار الدائري) */
+        .price-table input[type="radio"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #6b14d2;
+            border-radius: 50%;
+            outline: none;
+            transition: 0.2s;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+        
+        .price-table input[type="radio"]:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: inset 0 0 0 3px var(--card-bg);
         }
 
         .price-table td.price-value {
@@ -125,7 +156,48 @@
             font-weight: 700;
         }
 
-        /* 2. قسم طرق الدفع (Payment Methods) */
+        /* 2. خانات الـ ID الاحترافية */
+        .id-input-container {
+            margin-top: 15px;
+            background-color: #211b3b;
+            border: 1px solid #32295a;
+            border-radius: 10px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .id-input-container i { color: #63559c; }
+        .id-input-container input {
+            background: none;
+            border: none;
+            color: white;
+            width: 100%;
+            font-family: 'Cairo';
+            outline: none;
+            font-size: 14px;
+        }
+
+        /* زر الشحن الخاص بكل لعبة */
+        .btn-game-submit {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .btn-game-submit:hover {
+            background-color: #e3000f;
+        }
+
+        /* 3. قسم طرق الدفع (Payment Methods) */
         .payment-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -153,30 +225,7 @@
 
         .payment-box span { font-size: 14px; font-weight: 600; }
 
-        /* أزرار مواقع التواصل السريعة */
-        .social-section {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px 15px 0 15px;
-        }
-        .social-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: white;
-            font-weight: 700;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn-fb { background-color: #1877f2; }
-        .btn-tt { background-color: #000; border: 1px solid var(--primary-color); }
-
-        /* زر الواتساب العائم */
+        /* زر الواتساب العائم الاحترافي المتنقل */
         .whatsapp-floating {
             position: fixed;
             bottom: 20px;
@@ -215,12 +264,12 @@
 </head>
 <body>
 
-    <!-- شريط التنبيه العلوي -->
+    <!-- شريط الإعلان العلوي -->
     <div class="top-alert">
-        🚀 شحن فوري وآمن لجميع الألعاب - متجر rami chop المعتمد
+        🎉 أهلاً وسهلاً بك في متجر rami chop لشحن الألعاب الموثوق 100%
     </div>
 
-    <!-- هيدر المتجر -->
+    <!-- هيدر المتجر الاحترافي -->
     <div class="main-header">
         <div class="header-icons"><i class="fas fa-bars"></i></div>
         <div class="logo">rami chop</div>
@@ -230,42 +279,92 @@
         </div>
     </div>
 
-    <!-- بانر دعائي -->
+    <!-- بانر ترويجي رئيسي كبير -->
     <div class="promo-banner">
         <h2>عروض الشحن مستمرة! 🔥</h2>
-        <p>اختر الكمية التي تريدها وتواصل معنا عبر الواتساب لإرسال الـ ID وإتمام الدفع فوراً.</p>
+        <p>اختر الكمية وأدخل الـ ID الخاص بك الآن، وسيتم تحويلك إلى الواتساب لإتمام الدفع فوراً.</p>
     </div>
 
-    <!-- قسم الأسعار والمنتجات -->
+    <!-- قسم الأسعار والمنتجات (مطور مع الاختيار) -->
     <div class="section-title">أسعار شحن الألعاب الحالية</div>
     
     <div class="products-container">
 
-        <!-- أسعار فري فاير -->
-        <div class="product-card">
+        <!-- أسعار فري فاير (مطور) -->
+        <div class="product-card" id="ff_card">
             <div class="product-card-header">
                 <i class="fas fa-fire"></i>
                 <h3>جواهر فري فاير (Free Fire)</h3>
             </div>
+            
+            <!-- جدول الأسعار المطور مع الاختيار -->
             <table class="price-table">
-                <tr><td>100 جوهرة</td><td class="price-value">3.500 TND</td></tr>
-                <tr><td>210 جوهرة</td><td class="price-value">7.000 TND</td></tr>
-                <tr><td>530 جوهرة</td><td class="price-value">16.500 TND</td></tr>
-                <tr><td>1080 جوهرة</td><td class="price-value">33.000 TND</td></tr>
+                <tr onclick="document.getElementById('ff_100').checked=true">
+                    <td class="check-col"><input type="radio" id="ff_100" name="ff_amount" value="100 جوهرة" data-price="3.500 TND" checked></td>
+                    <td>100 جوهرة</td>
+                    <td class="price-value">3.500 TND</td>
+                </tr>
+                <tr onclick="document.getElementById('ff_210').checked=true">
+                    <td class="check-col"><input type="radio" id="ff_210" name="ff_amount" value="210 جوهرة" data-price="7.000 TND"></td>
+                    <td>210 جوهرة</td>
+                    <td class="price-value">7.000 TND</td>
+                </tr>
+                <tr onclick="document.getElementById('ff_530').checked=true">
+                    <td class="check-col"><input type="radio" id="ff_530" name="ff_amount" value="530 جوهرة" data-price="16.500 TND"></td>
+                    <td>530 جوهرة</td>
+                    <td class="price-value">16.500 TND</td>
+                </tr>
+                <tr onclick="document.getElementById('ff_1080').checked=true">
+                    <td class="check-col"><input type="radio" id="ff_1080" name="ff_amount" value="1080 جوهرة" data-price="33.000 TND"></td>
+                    <td>1080 جوهرة</td>
+                    <td class="price-value">33.000 TND</td>
+                </tr>
             </table>
+            
+            <!-- خانة الـ ID المطور -->
+            <div class="id-input-container">
+                <i class="fas fa-tag"></i>
+                <input type="text" id="ff_id" placeholder="أدخل الآي دي (ID) الخاص بك هنا...">
+            </div>
+            
+            <!-- زر شحن فري فاير التفاعلي -->
+            <a href="#" onclick="orderFF()" class="btn-game-submit">اطلب شحن فري فاير الآن</a>
         </div>
 
-        <!-- أسعار ببجي موبايل -->
-        <div class="product-card">
+        <!-- أسعار ببجي موبايل (مطور) -->
+        <div class="product-card" id="pubg_card">
             <div class="product-card-header">
                 <i class="fas fa-gamepad"></i>
                 <h3>شدات ببجي موبايل (PUBG UC)</h3>
             </div>
+            
+            <!-- جدول الأسعار المطور مع الاختيار -->
             <table class="price-table">
-                <tr><td>60 شدّة (UC)</td><td class="price-value">4.000 TND</td></tr>
-                <tr><td>325 شدّة (UC)</td><td class="price-value">18.000 TND</td></tr>
-                <tr><td>660 شدّة (UC)</td><td class="price-value">35.000 TND</td></tr>
+                <tr onclick="document.getElementById('pubg_60').checked=true">
+                    <td class="check-col"><input type="radio" id="pubg_60" name="pubg_amount" value="60 شدّة (UC)" data-price="4.000 TND" checked></td>
+                    <td>60 شدّة (UC)</td>
+                    <td class="price-value">4.000 TND</td>
+                </tr>
+                <tr onclick="document.getElementById('pubg_325').checked=true">
+                    <td class="check-col"><input type="radio" id="pubg_325" name="pubg_amount" value="325 شدّة (UC)" data-price="18.000 TND"></td>
+                    <td>325 شدّة (UC)</td>
+                    <td class="price-value">18.000 TND</td>
+                </tr>
+                <tr onclick="document.getElementById('pubg_660').checked=true">
+                    <td class="check-col"><input type="radio" id="pubg_660" name="pubg_amount" value="660 شدّة (UC)" data-price="35.000 TND"></td>
+                    <td>660 شدّة (UC)</td>
+                    <td class="price-value">35.000 TND</td>
+                </tr>
             </table>
+            
+            <!-- خانة الـ ID المطور -->
+            <div class="id-input-container">
+                <i class="fas fa-tag"></i>
+                <input type="text" id="pubg_id" placeholder="أدخل الـ ID الخاص بك في ببجي...">
+            </div>
+            
+            <!-- زر شحن ببجي التفاعلي -->
+            <a href="#" onclick="orderPUBG()" class="btn-game-submit">اطلب شحن ببجي الآن</a>
         </div>
 
     </div>
@@ -292,21 +391,8 @@
         </div>
     </div>
 
-    <!-- روابط الحسابات الرسمية -->
-    <div class="section-title">تابعنا على وسائل التواصل الاجتماعي</div>
-    <div class="social-section">
-        <!-- استبدل رابط_الفيسبوك برابط حسابك -->
-        <a href="رابط_حساب_الفيسبوك_هنا" target="_blank" class="social-btn btn-fb">
-            <i class="fab fa-facebook-f"></i> فيسبوك
-        </a>
-        <!-- استبدل رابط_التيك_توك برابط حسابك -->
-        <a href="رابط_حساب_التيك_توك_هنا" target="_blank" class="social-btn btn-tt">
-            <i class="fab fa-tiktok"></i> تيك توك
-        </a>
-    </div>
-
-    <!-- زر الواتساب العائم لطلب الشحن والدفع -->
-    <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank">
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank" title="تواصل معنا مباشرة عبر واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -316,44 +402,35 @@
         <p>لتأكيد الحوالات، تواصل معنا على الرقم: 46325170 216+</p>
     </footer>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rami chop - متجر شحن الألعاب</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #0f0c1b; color: #fff; margin: 0; text-align: center; }
-        .header { padding: 20px; color: #ff3c78; font-size: 24px; font-weight: bold; }
-        .card { background: #19142d; border-radius: 15px; padding: 20px; margin: 15px; border: 1px solid #ff3c78; }
-        .price { color: #f6dc58; font-weight: bold; font-size: 18px; }
-        .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px; }
-        .btn { background: #25D366; color: white; padding: 15px; border-radius: 10px; display: block; text-decoration: none; font-weight: bold; margin: 10px; }
-    </style>
-</head>
-<body>
-    <div class="header">rami chop</div>
-    
-    <div class="card">
-        <h3>جواهر فري فاير</h3>
-        <p>100 جوهرة - <span class="price">3.500 TND</span></p>
-        <p>210 جوهرة - <span class="price">7.000 TND</span></p>
-    </div>
+    <!-- السكريبت التفاعلي لربط المتجر بالواتساب تلقائياً -->
+    <script>
+        // رقم الواتساب الخاص بك
+        const myWhatsApp = "21646325170";
 
-    <div class="card">
-        <h3>طرق الدفع</h3>
-        <div class="payment-grid">
-            <div>D17</div>
-            <div>أوريدو</div>
-            <div>PayPal</div>
-            <div>مباشر</div>
-        </div>
-    </div>
+        // وظيفة طلب فري فاير
+        function orderFF() {
+            let idValue = document.getElementById("ff_id").value;
+            let amountValue = document.querySelector('input[name="ff_amount"]:checked').value;
+            let priceValue = document.querySelector('input[name="ff_amount"]:checked').getAttribute('data-price');
+            
+            if(idValue === "") { alert("يرجى إدخال الـ ID الخاص بك أولاً."); return; }
+            
+            let message = encodeURIComponent("أهلاً وسهلاً متجر rami chop!\nأريد طلب شحن:\nلعبة: فري فاير 🔥\nالآي دي: " + idValue + "\nالكمية: " + amountValue + "\nالسعر: " + priceValue + "\nيرجى التواصل لإتمام الدفع والتنفيذ.");
+            window.open("https://wa.me/" + myWhatsApp + "?text=" + message, '_blank');
+        }
 
-    <a href="https://wa.me/21646325170" class="btn">اطلب الشحن الآن عبر الواتساب</a>
+        // وظيفة طلب ببجي
+        function orderPUBG() {
+            let idValue = document.getElementById("pubg_id").value;
+            let amountValue = document.querySelector('input[name="pubg_amount"]:checked').value;
+            let priceValue = document.querySelector('input[name="pubg_amount"]:checked').getAttribute('data-price');
+            
+            if(idValue === "") { alert("يرجى إدخال الآي دي (ID) الخاص بك أولاً."); return; }
+            
+            let message = encodeURIComponent("أهلاً rami chop!\nأريد طلب شحن:\nلعبة: ببجي موبايل 🎮\nالـ ID: " + idValue + "\nالكمية: " + amountValue + "\nالسعر: " + priceValue + "\nشكراً لتواصلك.");
+            window.open("https://wa.me/" + myWhatsApp + "?text=" + message, '_blank');
+        }
+    </script>
+
 </body>
 </html>
