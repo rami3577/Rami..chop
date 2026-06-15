@@ -438,8 +438,22 @@
     </script>
 </body>
 </html>
-
-<button onclick="window.location.reload()" style="background: var(--primary-color); color: white; padding: 10px 20px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; display: block; margin: 20px auto;">
+<button id="installButton" style="display: block; margin: 20px auto; padding: 15px 30px; background-color: #ff3c78; color: white; border: none; border-radius: 50px; font-weight: bold; cursor: pointer;">
     تثبيت تطبيق Rami.chop الآن
 </button>
 
+<script>
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  document.getElementById('installButton').addEventListener('click', (e) => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+    } else {
+      alert('التطبيق مثبت بالفعل أو أن المتصفح لا يدعم التثبيت المباشر.');
+    }
+  });
+</script>
