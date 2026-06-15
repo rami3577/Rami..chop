@@ -11,7 +11,7 @@
 
     <!-- استيراد خط القاهرة العربي الاحترافي -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات -->
+    <!-- مكتبة الأيقونات لتصميم السلة والأسهم والتطبيقات والشعار -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -34,19 +34,23 @@
             overflow-x: hidden;
         }
 
+        /* الشريط العلوي الممتد بالعرض الكامل */
         .top-alert {
             background: linear-gradient(90deg, var(--primary-color) 0%, var(--purple-color) 100%);
             color: #fff;
             font-size: 13px;
-            padding: 8px 10px;
+            padding: 12px 20px;
             text-align: center;
             font-weight: 600;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* تعديل الهيدر ليتناسب مع أبعاد الصورة الجديدة */
+        /* الهيدر المدمج الذي يحتوي على الصورة بالعرض مع الأيقونات */
         .main-header {
             background-color: var(--card-bg);
-            padding: 10px 15px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -56,21 +60,25 @@
             z-index: 100;
         }
 
-        .header-icons { display: flex; gap: 18px; font-size: 18px; color: #bfaaff; }
+        .header-icons { display: flex; gap: 18px; font-size: 20px; color: #bfaaff; cursor: pointer; }
 
-        /* تنسيق حاوية الشعار الجديد */
-        .logo-image-container {
+        .logo-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            max-width: 140px; /* التحكم في عرض الصورة ليناسب الهيدر */
+            width: 70%; /* إعطاء مساحة كافية للصورة لتتمدد بالعرض */
         }
 
-        .logo-image-container img {
+        /* تنسيق الصورة لتظهر بشكل عريض وفخم ومتوهج */
+        .hero-logo-img {
             width: 100%;
+            max-width: 400px; /* حجم مثالي جداً في الهاتف ويتناسق بالعرض */
             height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(255, 60, 120, 0.5)); /* إضافة توهج خفيف حول الشعار */
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(107, 20, 210, 0.5);
+            display: block;
+            margin: 0 auto;
         }
 
         .promo-banner {
@@ -285,6 +293,7 @@
             font-size: 28px;
             z-index: 999;
             text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         footer {
@@ -296,23 +305,34 @@
             margin-top: 40px;
             text-align: center;
         }
+
+        /* تحسينات للشاشات العريضة لتظل الصورة متناسقة */
+        @media (min-width: 768px) {
+            .logo-container { max-width: 500px; }
+            .products-container, .apps-grid, .payment-grid {
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .promo-banner { max-width: 670px; margin: 20px auto; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- الشريط العلوي ممتد بالعرض الكامل -->
     <div class="top-alert">
         🎉 مرحباً بك في منصة Rami.chop لشحن الألعاب والتطبيقات المعتمدة
     </div>
 
-    <!-- الهيدر الجديد الذي يستدعي صورتك الاحترافية المباشرة -->
+    <!-- الهيدر المدمج: أيقونة السلة + الصورة العريضة الفخمة + أيقونة القائمة -->
     <div class="main-header">
-        <div class="header-icons"><i class="fas fa-bars"></i></div>
-        
-        <div class="logo-image-container">
-            <img src="5573_2.png" alt="Rami.chop Logo">
-        </div>
-        
         <div class="header-icons"><i class="fas fa-shopping-bag"></i></div>
+        <div class="logo-container">
+            <!-- الصورة تعرض هنا بكامل مرونتها وعرضها الفخم -->
+            <img src="5573_2.png" alt="Rami.chop" class="hero-logo-img">
+        </div>
+        <div class="header-icons"><i class="fas fa-bars"></i></div>
     </div>
 
     <div class="promo-banner">
@@ -356,6 +376,7 @@
     <!-- قسم التطبيقات المعروفة -->
     <div class="section-title">باقي التطبيقات والاشتراكات المعروفة</div>
     <div class="apps-grid">
+        
         <!-- تيك توك -->
         <a href="https://wa.me/21646325170?text=أريد%20خدمات%20تطبيق%20تيك%20توك" target="_blank" class="app-row">
             <div class="app-info">
@@ -382,6 +403,7 @@
             </div>
             <i class="fas fa-chevron-left" style="color: #63559c;"></i>
         </a>
+
     </div>
 
     <!-- طرق الدفع -->
@@ -393,6 +415,7 @@
         <div class="payment-box p-meet"><i class="fas fa-handshake"></i><span>دفع مباشر</span></div>
     </div>
 
+    <!-- زر الواتساب العائم -->
     <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <footer>
