@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- الأكواد الخاصة بجوجل لكي يضع موقعك في النتيجة الأولى -->
     <title>Rami.chop - متجر الشحن والتطبيقات الأول في تونس</title>
     <meta name="description" content="موقع Rami.chop الرسمي لشحن جواهر فري فاير وشدات ببجي وتطبيقات الترفيه في تونس بأسرع وقت وأفضل الأسعار عبر D17 وأوريدو.">
     <meta name="keywords" content="Rami chop, rami.chop, rami chop free fire, شحن فري فاير تونس, رامي شوب">
@@ -12,7 +11,7 @@
 
     <!-- استيراد خط القاهرة العربي الاحترافي -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- مكتبة الأيقونات لتصميم السلة والأسهم والتطبيقات والشعار -->
+    <!-- مكتبة الأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -44,9 +43,10 @@
             font-weight: 600;
         }
 
+        /* تعديل الهيدر ليتناسب مع أبعاد الصورة الجديدة */
         .main-header {
             background-color: var(--card-bg);
-            padding: 15px;
+            padding: 10px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -58,61 +58,19 @@
 
         .header-icons { display: flex; gap: 18px; font-size: 18px; color: #bfaaff; }
 
-        .logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-icon-box {
-            position: relative;
-            font-size: 24px;
-            color: #ffffff;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--purple-color) 100%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        /* تنسيق حاوية الشعار الجديد */
+        .logo-image-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(255, 60, 120, 0.4);
-            margin-bottom: 4px;
+            max-width: 140px; /* التحكم في عرض الصورة ليناسب الهيدر */
         }
 
-        .logo-icon-box::before {
-            content: "\f6ed"; 
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            font-size: 32px;
-            color: rgba(255, 255, 255, 0.15);
-            z-index: 1;
-        }
-
-        .logo-icon-box i {
-            position: relative;
-            z-index: 2;
-            font-size: 20px;
-        }
-
-        .logo-text { 
-            font-size: 20px; 
-            font-weight: 800; 
-            color: #ffffff;
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 10px rgba(255, 60, 120, 0.6);
-        }
-        
-        .logo-subtext {
-            font-size: 11px;
-            font-weight: 700;
-            color: #bfaaff;
-            text-transform: uppercase;
-            margin-top: -4px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        .logo-image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(255, 60, 120, 0.5)); /* إضافة توهج خفيف حول الشعار */
         }
 
         .promo-banner {
@@ -120,21 +78,21 @@
             background: linear-gradient(135deg, var(--purple-color) 0%, var(--bg-dark) 100%);
             border: 2px solid var(--primary-color);
             border-radius: 15px;
-            padding: 25px 20px;
+            padding: 20px;
             text-align: right;
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .promo-banner-text { width: 70%; }
-        .promo-banner h2 { margin: 0; font-size: 22px; font-weight: 800; color: #ffffff; }
-        .promo-banner p { margin: 5px 0 0 0; color: #bfaaff; font-size: 13px; }
+        .promo-banner-text { width: 75%; }
+        .promo-banner h2 { margin: 0; font-size: 20px; font-weight: 800; color: #ffffff; }
+        .promo-banner p { margin: 5px 0 0 0; color: #bfaaff; font-size: 12px; }
         .promo-banner-badge {
             background-color: var(--primary-color);
-            padding: 15px;
+            padding: 12px;
             border-radius: 50%;
-            font-size: 30px;
+            font-size: 24px;
             color: white;
             box-shadow: 0 0 15px var(--primary-color);
         }
@@ -164,14 +122,8 @@
             border-radius: 15px;
             padding: 15px;
             text-align: right;
-            transition: 0.3s;
         }
         
-        .product-card:has(input[type="radio"]:checked) {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(255, 60, 120, 0.3);
-        }
-
         .product-card-header {
             display: flex;
             align-items: center;
@@ -190,8 +142,6 @@
             margin-bottom: 15px;
         }
 
-        .price-table tr { cursor: pointer; }
-
         .price-table td {
             padding: 10px 0;
             border-bottom: 1px solid #211b3b;
@@ -207,9 +157,7 @@
             border: 2px solid #6b14d2;
             border-radius: 50%;
             outline: none;
-            transition: 0.2s;
             cursor: pointer;
-            vertical-align: middle;
         }
         
         .price-table input[type="radio"]:checked {
@@ -235,7 +183,6 @@
             gap: 10px;
             margin-bottom: 15px;
         }
-        .id-input-container i { color: #63559c; }
         .id-input-container input {
             background: none;
             border: none;
@@ -257,7 +204,6 @@
             text-align: center;
             text-decoration: none;
             font-size: 15px;
-            box-shadow: 0 4px 10px rgba(255, 60, 120, 0.2);
         }
 
         .apps-grid {
@@ -265,6 +211,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            margin-bottom: 30px;
         }
 
         .app-row {
@@ -277,10 +224,8 @@
             padding: 15px 20px;
             text-decoration: none;
             color: white;
-            transition: 0.3s;
         }
 
-        .app-row:hover { border-color: var(--primary-color); }
         .app-info { display: flex; align-items: center; gap: 15px; }
         
         .app-icon-box {
@@ -338,16 +283,8 @@
             align-items: center;
             justify-content: center;
             font-size: 28px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             z-index: 999;
             text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         footer {
@@ -367,20 +304,15 @@
         🎉 مرحباً بك في منصة Rami.chop لشحن الألعاب والتطبيقات المعتمدة
     </div>
 
+    <!-- الهيدر الجديد الذي يستدعي صورتك الاحترافية المباشرة -->
     <div class="main-header">
         <div class="header-icons"><i class="fas fa-bars"></i></div>
         
-        <div class="logo-container">
-            <div class="logo-icon-box">
-                <i class="fas fa-gamepad"></i>
-            </div>
-            <div class="logo-text">Rami.chop</div>
-            <div class="logo-subtext">S<i class="fas fa-shopping-cart" style="font-size: 9px;"></i>op</div>
+        <div class="logo-image-container">
+            <img src="5573_2.png" alt="Rami.chop Logo">
         </div>
-
-        <div class="header-icons">
-            <i class="fas fa-shopping-bag"></i>
-        </div>
+        
+        <div class="header-icons"><i class="fas fa-shopping-bag"></i></div>
     </div>
 
     <div class="promo-banner">
@@ -388,27 +320,26 @@
             <h2>شحن موثوق وسريع! 🔥</h2>
             <p>اختر الكمية، أدخل الـ ID، وسيتم تحويلك مباشرة لتأكيد الطلب عبر الواتساب فوراً.</p>
         </div>
-        <div class="promo-banner-badge">
-            <i class="fas fa-shield-alt"></i>
-        </div>
+        <div class="promo-banner-badge"><i class="fas fa-shield-alt"></i></div>
     </div>
 
+    <!-- قسم الألعاب الفورية -->
     <div class="section-title">شحن الألعاب الفوري (بالـ ID)</div>
     
     <div class="products-container">
         <!-- فري فاير -->
-        <div class="product-card" id="ff_card">
+        <div class="product-card">
             <div class="product-card-header">
                 <i class="fas fa-fire"></i>
                 <h3>جواهر فري فاير (Free Fire)</h3>
             </div>
             <table class="price-table">
-                <tr onclick="document.getElementById('ff_100').checked=true">
+                <tr>
                     <td class="check-col"><input type="radio" id="ff_100" name="ff_amount" value="100 جوهرة" data-price="3.500 TND" checked></td>
                     <td>100 جوهرة</td>
                     <td class="price-value">3.500 TND</td>
                 </tr>
-                <tr onclick="document.getElementById('ff_210').checked=true">
+                <tr>
                     <td class="check-col"><input type="radio" id="ff_210" name="ff_amount" value="210 جوهرة" data-price="7.000 TND"></td>
                     <td>210 جوهرة</td>
                     <td class="price-value">7.000 TND</td>
@@ -422,10 +353,47 @@
         </div>
     </div>
 
-    <!-- زر الواتساب العائم -->
-    <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- قسم التطبيقات المعروفة -->
+    <div class="section-title">باقي التطبيقات والاشتراكات المعروفة</div>
+    <div class="apps-grid">
+        <!-- تيك توك -->
+        <a href="https://wa.me/21646325170?text=أريد%20خدمات%20تطبيق%20تيك%20توك" target="_blank" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-tiktok"><i class="fab fa-tiktok"></i></div>
+                <div class="app-name">TikTok (هدايا ودعم حسابات)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
+
+        <!-- فيسبوك -->
+        <a href="https://wa.me/21646325170?text=أريد%20خدمات%20تطبيق%20فيسبوك" target="_blank" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-facebook"><i class="fab fa-facebook-f"></i></div>
+                <div class="app-name">Facebook (إعلانات وتمويل)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
+
+        <!-- نيتفليكس -->
+        <a href="https://wa.me/21646325170?text=أريد%20حساب%20نيتفليكس" target="_blank" class="app-row">
+            <div class="app-info">
+                <div class="app-icon-box bg-netflix"><i class="fas fa-tv"></i></div>
+                <div class="app-name">Netflix (حسابات واشتراكات)</div>
+            </div>
+            <i class="fas fa-chevron-left" style="color: #63559c;"></i>
+        </a>
+    </div>
+
+    <!-- طرق الدفع -->
+    <div class="section-title">طرق الدفع المتوفرة</div>
+    <div class="payment-grid">
+        <div class="payment-box p-d17"><i class="fas fa-wallet"></i><span>تطبيق D17</span></div>
+        <div class="payment-box p-ooredoo"><i class="fas fa-sim-card"></i><span>بطاقة أوريدو</span></div>
+        <div class="payment-box p-paypal"><i class="fab fa-paypal"></i><span>PayPal</span></div>
+        <div class="payment-box p-meet"><i class="fas fa-handshake"></i><span>دفع مباشر</span></div>
+    </div>
+
+    <a href="https://wa.me/21646325170" class="whatsapp-floating" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <footer>
         <p>&copy; 2026 منصة Rami.chop الشاملة لشحن الألعاب.</p>
